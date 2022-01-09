@@ -1,0 +1,17 @@
+#全局端口定义server:
+# 全局字符集设置
+spring:
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+  aop:
+    proxy-target-class: true
+server:
+  tomcat:
+    uri-encoding: utf-8
+
+tess4j:
+  data-path: H:\workspace\code\heima-leadnews\heima-leadnews\heima-leadnews-common\src\main\resources\chi_sim.traineddata
+  language: chi_sim

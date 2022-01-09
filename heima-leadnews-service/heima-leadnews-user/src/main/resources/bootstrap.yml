@@ -1,0 +1,13 @@
+server:
+  port: 51801
+spring:
+  application:
+    name: leadnews-user
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 1.117.157.193:8848
+      config:
+        server-addr: 1.117.157.193:8848
+        file-extension: yml
+logging.level.org.springframework.boot.autoconfigure: error

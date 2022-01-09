@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.heima.wemedia.mapper.WmNewsMapper">
+    <resultMap id="resultMap" type="com.heima.model.wemedia.vos.NewsAuthVo">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="type" property="type"/>
+        <result column="channel_id" property="channelId"/>
+        <result column="labels" property="labels"/>
+        <result column="created_time" property="createdTime"/>
+        <result column="submited_time" property="submitedTime"/>
+        <result column="status" property="status"/>
+        <result column="publish_time" property="publishTime"/>
+        <result column="reason" property="reason"/>
+        <result column="article_id" property="articleId"/>
+        <result column="images" property="images"/>
+        <result column="enable" property="enable"/>
+        <result column="name" property="authorName"/>
+    </resultMap>
+    <select id="getListVo" resultMap="resultMap">
+        SELECT
+        wm_user.`name`,
+        wm_news.*
+        FROM
+        wm_news
+        INNER JOIN
+        wm_user
+        ON
+        wm_news.user_id = wm_user.id
+        <where>
+            <if test="dto.title!=null and dto.title!=''">
+                AND wm_news.title LIKE #{dto.title}
+            </if>
+            <if test="dto.status!=null">
+                AND wm_news.`status` = #{dto.status}
+            </if>
+        </where>
+        ORDER BY
+        wm_news.created_time DESC
+    </select>
+    <select id="getNewsAuthOne" resultMap="resultMap">
+        SELECT
+        wm_user.`name`,
+        wm_news.*
+        FROM
+        wm_news
+        INNER JOIN
+        wm_user
+        ON
+        wm_news.user_id = wm_user.id
+        WHERE wm_news.id=#{id}
+    </select>
+
+</mapper>

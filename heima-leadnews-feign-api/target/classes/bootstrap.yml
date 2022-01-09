@@ -1,0 +1,4 @@
+ribbon:
+  eager-load:
+    enabled: true # 开启饥饿加载
+    clients: leadnews-article
